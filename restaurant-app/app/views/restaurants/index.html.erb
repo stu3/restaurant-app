@@ -1,0 +1,36 @@
+<div class="container-fluid">
+
+
+  <div class="row">
+    <h3>All Restaurants</h3>
+    <p id="notice"><%= notice %></p>
+    <%= link_to 'New Restaurant', new_restaurant_path %>
+  </div>
+
+  <div class="row">
+   <% @restaurants.each do |restaurant| %>
+   <a href="<%= restaurant.website_url %>">
+   <div class="col-md-12 restaurant-item">
+     <div class="restaurant-image">
+       <img src="https://cdn.vox-cdn.com/thumbor/LwqGzgokGaOCTDZafWC4-WJPJOU=/0x0:2616x1472/1600x900/cdn.vox-cdn.com/uploads/chorus_image/image/43486762/tacobell_7.0.0.jpg"/>
+     </div>
+     <div class="restaurant-meta">
+       <h3 class="title"><td><%= restaurant.title %></td></h3>
+       <h5 class="address"><%= restaurant.address %> | <%= restaurant.phone_number %></h5>
+       <h5><%= "#{restaurant.city}, #{restaurant.state} #{restaurant.zip_code}" %></h5>
+       <p><%= restaurant.description %></p>
+     </div>
+
+     <div class="actions">
+        <ul>
+          <%= link_to 'Show', restaurant %></td>
+          <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
+          <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </ul>
+      </div>
+
+   </div>
+   </a>
+   <% end %>
+
+</div>
